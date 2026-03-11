@@ -29,19 +29,21 @@ public class Main {
                     spendings += moneySpend;
                     break;
                 case 3:
-                    if (taxEarningsMinusSpendings(earnings , spendings) > taxEarnings(earnings)){
+                    int tax1 = taxEarnings(earnings);
+                    int tax2 = taxEarningsMinusSpendings(earnings, spendings);
+                    if (tax2 > tax1){
                     System.out.println("Мы советуем вам УСН доходы");
-                    System.out.println("Ваш налог составит: " + taxEarnings(earnings) + "рублей");
-                    System.out.println("Налог на другой системе: " + taxEarningsMinusSpendings(earnings , spendings) + "рублей");
-                    System.out.println("Экономия: " + (taxEarningsMinusSpendings(earnings, spendings) - taxEarnings(earnings)) + "рублей");
-                } else if (taxEarningsMinusSpendings(earnings , spendings) < taxEarnings(earnings)) {
+                    System.out.println("Ваш налог составит: " + tax1 + "рублей");
+                    System.out.println("Налог на другой системе: " + tax2 + "рублей");
+                    System.out.println("Экономия: " + (tax2 - tax1) + "рублей");
+                } else if (tax2 < tax1) {
                     System.out.println("Мы советуем вам УСН доходы минус расходы");
-                    System.out.println("Ваш налог составит: " + taxEarningsMinusSpendings(earnings , spendings) + "рублей");
-                    System.out.println("Налог на другой системе: " + taxEarnings(earnings) + "рублей");
-                    System.out.println("Экономия: " + (taxEarnings(earnings) - taxEarningsMinusSpendings(earnings , spendings)) + "рублей");
+                    System.out.println("Ваш налог составит: " + tax2 + "рублей");
+                    System.out.println("Налог на другой системе: " + tax1 + "рублей");
+                    System.out.println("Экономия: " + (tax1 - tax2) + "рублей");
                 } else {
                     System.out.println("Вы можете выбрать любую систему налогооблажения");
-                    System.out.println("Ваш налог составит: " + taxEarningsMinusSpendings(earnings , spendings) + "рублей");
+                    System.out.println("Ваш налог составит: " + tax2 + "рублей");
                 }
                 break;
                 default:
